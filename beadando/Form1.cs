@@ -15,6 +15,7 @@ namespace beadando
     {
         BitArray bitek1 = new BitArray(20);
         BitArray bitek2 = new BitArray(20);
+        BitArray eredmeny = new BitArray(20);
         public Form1()
         {
             InitializeComponent();
@@ -75,13 +76,33 @@ namespace beadando
             }
         }
 
-   
+        private void szamolAnd(BitArray b1, BitArray b2)
+        {
+            eredmeny = b1.And(b2);
+           
+        }
+        private void szamolOr(BitArray b1, BitArray b2)
+        {
+            eredmeny = b1.Or(b2);
+            
+        }
+        private void szamolXor(BitArray b1, BitArray b2)
+        {
+            eredmeny = b1.Xor(b2);
+           
+        }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
             label1.Text = "1. Bitarray: \n";
             label2.Text = "2. Bitarray: \n";
+            label3.Text = "Eredmény: \n";
+
+            
+
+
+            
             int index = 0;
             foreach (Control c in panel1.Controls)
             {
@@ -110,7 +131,23 @@ namespace beadando
                 }
                 index2++;
             }
+            if (radioButton1.Checked == true)
+            {
+                this.szamolAnd(bitek1, bitek2);
 
+
+            }
+            else if (radioButton2.Checked == true)
+            {
+                this.szamolOr(bitek1, bitek2);
+
+
+            }
+            else
+            {
+                this.szamolXor(bitek1, bitek2);
+
+            }
 
 
             int sor = 0;
@@ -125,6 +162,13 @@ namespace beadando
             {
                 label2.Text += "Bit " + sor2 + ": " + i + " \n";
                 sor2++;
+            }
+
+            int sor3 = 0;
+            foreach (bool i in eredmeny)
+            {
+                label3.Text += "Bit " + sor3 + ": " + i + " \n";
+                sor3++;
             }
 
         }
