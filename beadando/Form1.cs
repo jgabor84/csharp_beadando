@@ -54,13 +54,13 @@ namespace beadando
         private void chkboxCsoport2()
         {
             CheckBox box;
-            for (int i = 20; i < 40; i++)
+            for (int i = 0; i < 20; i++)
             {
                 box = new CheckBox();
                 box.Tag = i.ToString();
                 box.Text = i.ToString();
                 box.AutoSize = true;
-                if (i < 30)
+                if (i < 10)
                 {
                     box.Location = new Point(10, i * 30);
                     panel2.Controls.Add(box);
@@ -95,11 +95,36 @@ namespace beadando
                 }
                 index++;
             }
+
+
+            int index2 = 0;
+            foreach (Control c in panel2.Controls)
+            {
+                if ((c is CheckBox) && ((CheckBox)c).Checked)
+                {
+                    bitek2.Set(index2, true);
+                }
+                else
+                {
+                    bitek2.Set(index2, false);
+                }
+                index2++;
+            }
+
+
+
             int sor = 0;
             foreach (bool i in bitek1)
             {
                 label1.Text += "Bit " + sor + ": "+ i +" \n";
                 sor++;
+            }
+
+            int sor2 = 0;
+            foreach (bool i in bitek2)
+            {
+                label2.Text += "Bit " + sor2 + ": " + i + " \n";
+                sor2++;
             }
 
         }
